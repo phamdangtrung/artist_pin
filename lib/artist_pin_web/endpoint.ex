@@ -1,5 +1,5 @@
 defmodule ArtistPinWeb.Endpoint do
-  use Phoenix.Endpoint, otp_app: :artist_pin
+  use Desktop.Endpoint, otp_app: :artist_pin
 
   # The session will be stored in the cookie and signed,
   # this means its contents can be read but not tampered with.
@@ -50,5 +50,6 @@ defmodule ArtistPinWeb.Endpoint do
   plug Plug.MethodOverride
   plug Plug.Head
   plug Plug.Session, @session_options
+  plug Desktop.Auth
   plug ArtistPinWeb.Router
 end

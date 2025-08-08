@@ -13,7 +13,9 @@ config :artist_pin,
 
 # Configures the endpoint
 config :artist_pin, ArtistPinWeb.Endpoint,
-  url: [host: "localhost"],
+  # url: [host: "localhost", port: 0],
+  http: [ip: {127, 0, 0, 1}, port: 10_000 + :rand.uniform(45_000)],
+  server: true,
   adapter: Bandit.PhoenixAdapter,
   render_errors: [
     formats: [html: ArtistPinWeb.ErrorHTML, json: ArtistPinWeb.ErrorJSON],

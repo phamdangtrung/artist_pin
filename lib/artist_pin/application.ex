@@ -17,7 +17,13 @@ defmodule ArtistPin.Application do
       # Start a worker by calling: ArtistPin.Worker.start_link(arg)
       # {ArtistPin.Worker, arg},
       # Start to serve requests, typically the last entry
-      ArtistPinWeb.Endpoint
+      ArtistPinWeb.Endpoint,
+      {Desktop.Window,
+       [
+         app: :artist_pin,
+         id: ArtistPinWindow,
+         url: &ArtistPinWeb.Endpoint.url/0
+       ]}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
