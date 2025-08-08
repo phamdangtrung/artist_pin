@@ -68,6 +68,7 @@ defmodule ArtistPin.MixProject do
       {:bandit, "~> 1.5"},
       {:desktop, github: "elixir-desktop/desktop"},
       {:ranch, "~> 2.2"},
+      {:floki, ">= 0.27.0", only: :test},
     ]
   end
 
