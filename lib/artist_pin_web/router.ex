@@ -18,6 +18,7 @@ defmodule ArtistPinWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :home
+    get "/landing", PageController, :landing
 
     live "/thermostat", ThermostatLive
   end

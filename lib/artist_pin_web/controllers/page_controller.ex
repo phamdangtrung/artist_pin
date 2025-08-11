@@ -4,4 +4,8 @@ defmodule ArtistPinWeb.PageController do
   def home(conn, _params) do
     render(conn, :home)
   end
+
+  def landing(conn, _params) do
+    render(conn, :landing)
+  end
 end
