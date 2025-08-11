@@ -28,7 +28,11 @@ if config_env() == :prod do
       For example: /etc/artist_pin/artist_pin.db
       """
 
-  config :artist_pin, ArtistPin.Repo,
+  config :artist_pin, ArtistPin.AuthRepo,
+    database: database_path,
+    pool_size: String.to_integer(System.get_env("POOL_SIZE") || "5")
+
+  config :artist_pin, ArtistPin.AppRepo,
     database: database_path,
     pool_size: String.to_integer(System.get_env("POOL_SIZE") || "5")
 

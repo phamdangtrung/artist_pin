@@ -64,7 +64,7 @@ defmodule ArtistPin.UsersFixtures do
   end
 
   def override_token_authenticated_at(token, authenticated_at) when is_binary(token) do
-    ArtistPin.Repo.update_all(
+    ArtistPin.AuthRepo.update_all(
       from(t in Users.UserToken,
         where: t.token == ^token
       ),
@@ -74,14 +74,14 @@ defmodule ArtistPin.UsersFixtures do
 
   def generate_user_magic_link_token(user) do
     {encoded_token, user_token} = Users.UserToken.build_email_token(user, "login")
-    ArtistPin.Repo.insert!(user_token)
+    ArtistPin.AuthRepo.insert!(user_token)
     {encoded_token, user_token.token}
   end
 
   def offset_user_token(token, amount_to_add, unit) do
     dt = DateTime.add(DateTime.utc_now(:second), amount_to_add, unit)
 
-    ArtistPin.Repo.update_all(
+    ArtistPin.AuthRepo.update_all(
       from(ut in Users.UserToken, where: ut.token == ^token),
       set: [inserted_at: dt, authenticated_at: dt]
     )

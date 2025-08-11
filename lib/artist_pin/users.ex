@@ -4,7 +4,7 @@ defmodule ArtistPin.Users do
   """
 
   import Ecto.Query, warn: false
-  alias ArtistPin.Repo
+  alias ArtistPin.AuthRepo
 
   alias ArtistPin.Users.{User, UserToken, UserNotifier}
 

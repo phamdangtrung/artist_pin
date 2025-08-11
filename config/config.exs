@@ -21,7 +21,11 @@ config :artist_pin, :scopes,
   ]
 
 config :artist_pin,
-  ecto_repos: [ArtistPin.Repo],
+  ecto_repos: [ArtistPin.AuthRepo],
+  generators: [timestamp_type: :utc_datetime]
+
+config :artist_pin,
+  ecto_repos: [ArtistPin.AppRepo],
   generators: [timestamp_type: :utc_datetime]
 
 # Configures the endpoint

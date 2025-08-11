@@ -8,7 +8,12 @@ config :pbkdf2_elixir, :rounds, 1
 # The MIX_TEST_PARTITION environment variable can be used
 # to provide built-in test partitioning in CI environment.
 # Run `mix help test` for more information.
-config :artist_pin, ArtistPin.Repo,
+config :artist_pin, ArtistPin.AuthRepo,
+  database: Path.expand("../artist_pin_test.db", __DIR__),
+  pool_size: 5,
+  pool: Ecto.Adapters.SQL.Sandbox
+
+config :artist_pin, ArtistPin.AppRepo,
   database: Path.expand("../artist_pin_test.db", __DIR__),
   pool_size: 5,
   pool: Ecto.Adapters.SQL.Sandbox

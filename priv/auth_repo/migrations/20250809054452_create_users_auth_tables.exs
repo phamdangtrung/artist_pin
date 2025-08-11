@@ -1,4 +1,4 @@
-defmodule ArtistPin.Repo.Migrations.CreateUsersAuthTables do
+defmodule ArtistPin.AuthRepo.Migrations.CreateUsersAuthTables do
   use Ecto.Migration
 
   def change do

@@ -81,9 +81,11 @@ defmodule ArtistPin.MixProject do
   # See the documentation for `Mix` for more info on aliases.
   defp aliases do
     [
-      setup: ["deps.get", "ecto.setup", "assets.setup", "assets.build"],
-      "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
-      "ecto.reset": ["ecto.drop", "ecto.setup"],
+      # setup: ["deps.get", "ecto.setup", "assets.setup", "assets.build"],
+      "ecto.auth_setup": ["ecto.create -r ArtistPin.AuthRepo", "ecto.migrate -r ArtistPin.AuthRepo", "run priv/auth_repo/seeds.exs"],
+      "ecto.auth_reset": ["ecto.drop -r ArtistPin.AuthRepo", "ecto.auth_setup"],
+      "ecto.setup": ["ecto.create -r ArtistPin.AppRepo", "ecto.migrate -r ArtistPin.AppRepo", "run priv/app_repo/seeds.exs"],
+      "ecto.reset": ["ecto.drop -r ArtistPin.AppRepo", "ecto.setup"],
       test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"],
       "assets.setup": ["tailwind.install --if-missing", "esbuild.install --if-missing"],
       "assets.build": ["tailwind artist_pin", "esbuild artist_pin"],

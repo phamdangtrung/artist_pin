@@ -40,7 +40,7 @@ defmodule ArtistPin.Users.User do
 
     if Keyword.get(opts, :validate_unique, true) do
       changeset
-      |> unsafe_validate_unique(:email, ArtistPin.Repo)
+      |> unsafe_validate_unique(:email, ArtistPin.AuthRepo)
       |> unique_constraint(:email)
       |> validate_email_changed()
     else

@@ -9,7 +9,8 @@ defmodule ArtistPin.Application do
   def start(_type, _args) do
     children = [
       ArtistPinWeb.Telemetry,
-      ArtistPin.Repo,
+      ArtistPin.AuthRepo,
+      ArtistPin.AppRepo,
       {Ecto.Migrator,
        repos: Application.fetch_env!(:artist_pin, :ecto_repos), skip: skip_migrations?()},
       {DNSCluster, query: Application.get_env(:artist_pin, :dns_cluster_query) || :ignore},

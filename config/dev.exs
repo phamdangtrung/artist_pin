@@ -1,7 +1,13 @@
 import Config
 
 # Configure your database
-config :artist_pin, ArtistPin.Repo,
+config :artist_pin, ArtistPin.AuthRepo,
+  database: Path.expand("../artist_pin_dev.db", __DIR__),
+  pool_size: 5,
+  stacktrace: true,
+  show_sensitive_data_on_connection_error: true
+
+config :artist_pin, ArtistPin.AppRepo,
   database: Path.expand("../artist_pin_dev.db", __DIR__),
   pool_size: 5,
   stacktrace: true,

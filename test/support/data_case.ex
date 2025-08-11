@@ -18,7 +18,7 @@ defmodule ArtistPin.DataCase do
 
   using do
     quote do
-      alias ArtistPin.Repo
+      alias ArtistPin.AuthRepo
 
       import Ecto
       import Ecto.Changeset
@@ -36,7 +36,7 @@ defmodule ArtistPin.DataCase do
   Sets up the sandbox based on the test tags.
   """
   def setup_sandbox(tags) do
-    pid = Ecto.Adapters.SQL.Sandbox.start_owner!(ArtistPin.Repo, shared: not tags[:async])
+    pid = Ecto.Adapters.SQL.Sandbox.start_owner!(ArtistPin.AuthRepo, shared: not tags[:async])
     on_exit(fn -> Ecto.Adapters.SQL.Sandbox.stop_owner(pid) end)
   end
 

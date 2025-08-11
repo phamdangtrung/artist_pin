@@ -27,7 +27,7 @@ defmodule ArtistPinWeb.UserLive.LoginTest do
 
       assert html =~ "If your email is in our system"
 
-      assert ArtistPin.Repo.get_by!(ArtistPin.Users.UserToken, user_id: user.id).context ==
+      assert ArtistPin.AuthRepo.get_by!(ArtistPin.Users.UserToken, user_id: user.id).context ==
                "login"
     end
 
